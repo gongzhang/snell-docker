@@ -4,7 +4,7 @@ RUN apt-get update && \
 
 WORKDIR /root
 
-RUN wget https://github.com/surge-networks/snell/releases/download/1.0.1/snell-server-v1.0.1-linux-amd64.zip -O snell.zip && \
+RUN wget https://github.com/surge-networks/snell/releases/download/v1.1.0/snell-server-v1.1.0-linux-amd64.zip -O snell.zip && \
     unzip snell.zip && \
     rm snell.zip
 
@@ -15,7 +15,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /root
-COPY --from=helper /root/snell-server ./snell-server
+COPY --from=helper /root/snell-server /usr/local/bin/snell-server
 COPY . .
 
 ENV PSK=ABCDEFGHIJKLMNOPQRSTUVWXYZ12345 \
@@ -23,4 +23,4 @@ ENV PSK=ABCDEFGHIJKLMNOPQRSTUVWXYZ12345 \
 
 EXPOSE 8000
 
-CMD envsubst < snell-server.conf.template > snell-server.conf && ./snell-server
+CMD envsubst < snell-server.conf.template > snell-server.conf && snell-server
