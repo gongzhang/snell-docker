@@ -4,7 +4,7 @@ RUN apt-get update && \
 
 WORKDIR /root
 
-RUN wget https://github.com/surge-networks/snell/releases/download/v1.1.0/snell-server-v1.1.0-linux-amd64.zip -O snell.zip && \
+RUN wget https://github.com/surge-networks/snell/releases/download/v1.1.1/snell-server-v1.1.1-linux-amd64.zip -O snell.zip && \
     unzip snell.zip && \
     rm snell.zip
 
